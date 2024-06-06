@@ -7,7 +7,7 @@
 class ExceptionMaker : public std::exception
 {
 	public:
-		virtual ~ExceptionMaker()	throw()
+		~ExceptionMaker()	throw()
 		{}
 
 		ExceptionMaker(const std::string message)
@@ -49,8 +49,6 @@ class Bureaucrat
 		class GradeTooHighException : public ExceptionMaker
 		{
 			public:
-				~GradeTooHighException() throw()
-				{}
 				GradeTooHighException()
 					: ExceptionMaker("Grade goes beyond the best possible grade")
 				{}
@@ -59,8 +57,6 @@ class Bureaucrat
 		class GradeTooLowException : public ExceptionMaker
 		{
 			public:
-				~GradeTooLowException() throw()
-				{}
 				GradeTooLowException()
 					: ExceptionMaker("Grade goes beyond the worst possible grade")
 				{}
