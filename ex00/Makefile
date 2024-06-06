@@ -1,9 +1,11 @@
 .SILENT:
-NAME		= 	interface
+NAME		= 	bureaucrat
 
 CC 			= 	c++
 
 CFLAGS		= 	-Wall -Wextra -Werror -std=c++98 -Wshadow -g #-fsanitize=address
+
+VAL_FLAGS	=	--show-leak-kinds=all --leak-check=full --track-origins=yes --track-fds=yes
 
 RM 			= 	rm -rf
 
@@ -14,11 +16,7 @@ SRC_DIR		=	src/
 OBJ_DIR		=	temp/
 
 SRC			=	$(addprefix $(SRC_DIR),	main.cpp \
-										AMateria.cpp \
-										Ice.cpp \
-										Cure.cpp \
-										Character.cpp \
-										MateriaSource.cpp)
+										Bureaucrat.cpp)
 
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 
@@ -54,6 +52,9 @@ fclean:			clean
 				printf '$(BROOM)\t\t\t$(SUS)\n'
 
 re:				fclean	all
+
+run:			all
+				valgrind  $(VAL_FLAGS) ./$(NAME)
 
 done:
 				clear
