@@ -1,3 +1,4 @@
+#include "../inc/PresidentialPardonForm.hpp"
 #include "../inc/ShrubberyCreationForm.hpp"
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/Bureaucrat.hpp"
@@ -47,27 +48,32 @@ void	testHeader(std::ostream &o, std::string name)
 
 int main(void)
 {
+	Bureaucrat	op("Genghis Khan", 1);
+
 	TRY_CATCH_TEST("ShrubberyCreationForm",
 		{
-			ShrubberyCreationForm	shrub("Tom Foolery");
-			Bureaucrat				bo("bobo", 1);
-			bo.signAForm(shrub);
-			bo.executeForm(shrub);
+			ShrubberyCreationForm	shrub("ShrubberyCreation");
+			op.signAForm(shrub);
+			op.executeForm(shrub);
 		});
-
 	TRY_CATCH_TEST("RobotomyRequestForm",
 		{
-			RobotomyRequestForm		rob("Tom Foolery");
-			Bureaucrat				bo("bobo", 1);
-			bo.signAForm(rob);
-			bo.executeForm(rob);
+			RobotomyRequestForm		rob("Robotomy");
+			op.signAForm(rob);
+			op.executeForm(rob);
 		});
-
+	TRY_CATCH_TEST("PresidentialPardonForm",
+		{
+			PresidentialPardonForm	pres("PresidentialPardon");
+			op.signAForm(pres);
+			op.executeForm(pres);
+		});
 	TRY_CATCH_TEST("Low-Tier Bureaucrat",
 		{
-			ShrubberyCreationForm	shrub("Tom Foolery");
-			Bureaucrat				bo("Trump", 150);
-			bo.signAForm(shrub);
-			bo.executeForm(shrub);
+			PresidentialPardonForm	pres("Tom Foolery");
+			Bureaucrat				l("Trump", 150);
+
+			l.signAForm(pres);
+			l.executeForm(pres);
 		});
 }
