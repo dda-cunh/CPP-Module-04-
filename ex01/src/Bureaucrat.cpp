@@ -88,6 +88,20 @@ Bureaucrat Bureaucrat::operator--(int)
 }
 //-----------------------------------------------------------------//
 
+//------------------------------  EXCEPTIONS  -------------------------------//
+Bureaucrat::GradeTooHighException::GradeTooHighException()
+	: ExceptionMaker("Grade goes beyond the best possible grade")
+{
+
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException()
+	: ExceptionMaker("Grade goes beyond the worst possible grade")
+{
+
+}
+//---------------------------------------------------------------------------//
+
 //------------------------  STATIC MEMBERS  -----------------------//
 const short Bureaucrat::_numerical_max_grade = 150;
 const short Bureaucrat::_numerical_min_grade = 1;

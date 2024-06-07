@@ -95,6 +95,32 @@ void	AForm::executeValidator(Bureaucrat const &executor)	const
 
 //---------------------------------------------------------------------------//
 
+//------------------------------  EXCEPTIONS  -------------------------------//
+AForm::GradeTooHighException::GradeTooHighException()
+	: ExceptionMaker("Grade goes beyond the best possible grade")
+{
+
+}
+
+AForm::GradeTooLowException::GradeTooLowException()
+	: ExceptionMaker("Grade goes beyond the worst possible grade")
+{
+
+}
+
+AForm::AlreadySignedException::AlreadySignedException()
+	: ExceptionMaker("The Form is already signed")
+{
+
+}
+
+AForm::NotSignedException::NotSignedException()
+	: ExceptionMaker("The Form isn't signed")
+{
+
+}
+//---------------------------------------------------------------------------//
+
 //--------------------------  NON MEMBER FUNCTIONS  -------------------------//
 std::ostream	&operator<<(std::ostream & o, AForm const & i)
 {

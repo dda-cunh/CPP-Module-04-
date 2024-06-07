@@ -1,29 +1,9 @@
 #ifndef AForm_HPP
 # define AForm_HPP
 
-#include <string>
+# include <string>
 
-# ifndef EXCEPTION_MAKER_CLASS
-#  define EXCEPTION_MAKER_CLASS
-class ExceptionMaker : public std::exception
-{
-	public:
-		~ExceptionMaker()	throw()
-		{}
-
-		ExceptionMaker(const std::string message)
-			: _message(message)
-		{}
-
-		const char* what()	const	throw()
-		{
-			return (this->_message.c_str());
-		}
-
-	protected:
-		std::string	_message;
-};
-# endif
+# include "ExceptionMaker.hpp"
 
 class	Bureaucrat;
 
@@ -49,30 +29,22 @@ class	AForm
 		class GradeTooHighException : public ExceptionMaker
 		{
 			public:
-				GradeTooHighException()
-					: ExceptionMaker("Grade goes beyond the best possible grade")
-				{}
+				GradeTooHighException();
 		};
 		class GradeTooLowException : public ExceptionMaker
 		{
 			public:
-				GradeTooLowException()
-					: ExceptionMaker("Grade goes beyond the worst possible grade")
-				{}
+				GradeTooLowException();
 		};
 		class AlreadySignedException : public ExceptionMaker
 		{
 			public:
-				AlreadySignedException()
-					: ExceptionMaker("The Form is already signed")
-				{}
+				AlreadySignedException();
 		};
 		class NotSignedException : public ExceptionMaker
 		{
 			public:
-				NotSignedException()
-					: ExceptionMaker("The Form isn't signed")
-				{}
+				NotSignedException();
 		};
 
 	private:

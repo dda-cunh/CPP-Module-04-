@@ -20,7 +20,8 @@ SRC			=	$(addprefix $(SRC_DIR),	main.cpp \
 										AForm.cpp \
 										ShrubberyCreationForm.cpp \
 										PresidentialPardonForm.cpp \
-										RobotomyRequestForm.cpp)
+										RobotomyRequestForm.cpp \
+										ExceptionMaker.cpp)
 
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 

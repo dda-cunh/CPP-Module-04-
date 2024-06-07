@@ -1,27 +1,9 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <exception>
 # include <iostream>
 
-class ExceptionMaker : public std::exception
-{
-	public:
-		~ExceptionMaker()	throw()
-		{}
-
-		ExceptionMaker(const std::string message)
-			: _message(message)
-		{}
-
-		const char* what()	const	throw()
-		{
-			return (this->_message.c_str());
-		}
-
-	protected:
-		std::string	_message;
-};
+# include "ExceptionMaker.hpp"
 
 class Bureaucrat
 {
@@ -49,18 +31,14 @@ class Bureaucrat
 		class GradeTooHighException : public ExceptionMaker
 		{
 			public:
-				GradeTooHighException()
-					: ExceptionMaker("Grade goes beyond the best possible grade")
-				{}
+				GradeTooHighException();
 		};
-
 		class GradeTooLowException : public ExceptionMaker
 		{
 			public:
-				GradeTooLowException()
-					: ExceptionMaker("Grade goes beyond the worst possible grade")
-				{}
+				GradeTooLowException();
 		};
+
 };
 
 std::ostream	&operator<<(std::ostream & o, Bureaucrat const & i);

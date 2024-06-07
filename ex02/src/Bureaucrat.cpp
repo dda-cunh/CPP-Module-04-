@@ -1,8 +1,7 @@
 #include "../inc/Bureaucrat.hpp"
 #include "../inc/AForm.hpp"
-#include <exception>
 
-//--------------------------  CANONICAL  --------------------------//
+//-------------------------------  CANONICAL  -------------------------------//
 Bureaucrat::Bureaucrat(void) : _name("Default Bureaucrat"), _grade(150)
 {
 	// std::cout << "Default constructor called" << std::endl;
@@ -26,9 +25,9 @@ Bureaucrat::~Bureaucrat(void)
 {
 	// std::cout << "Destructor called" << std::endl;
 }
-//-----------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 
-//-------------------------  CONSTRUCTORS  ------------------------//
+//------------------------------  CONSTRUCTORS  -----------------------------//
 Bureaucrat::Bureaucrat(std::string name, short grade)
 	: _name(name)
 {
@@ -38,9 +37,9 @@ Bureaucrat::Bureaucrat(std::string name, short grade)
 		throw (Bureaucrat::GradeTooLowException());
 	this->_grade = grade;
 }
-//-----------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 
-//-----------------------  MEMBER FUNCTIONS  ----------------------//
+//----------------------------  MEMBER FUNCTIONS  ---------------------------//
 const short	&Bureaucrat::getGrade()	const
 {
 	return (this->_grade);
@@ -100,18 +99,32 @@ Bureaucrat Bureaucrat::operator--(int)
 		throw (Bureaucrat::GradeTooLowException());
 	return (copy);
 }
-//-----------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 
-//------------------------  STATIC MEMBERS  -----------------------//
+//------------------------------  EXCEPTIONS  -------------------------------//
+Bureaucrat::GradeTooHighException::GradeTooHighException()
+	: ExceptionMaker("Grade goes beyond the best possible grade")
+{
+
+}
+
+Bureaucrat::GradeTooLowException::GradeTooLowException()
+	: ExceptionMaker("Grade goes beyond the worst possible grade")
+{
+
+}
+//---------------------------------------------------------------------------//
+
+//-----------------------------  STATIC MEMBERS  ----------------------------//
 const short Bureaucrat::_numerical_max_grade = 150;
 const short Bureaucrat::_numerical_min_grade = 1;
-//-----------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 
-//---------------------  NON MEMBER FUNCTIONS  --------------------//
+//--------------------------  NON MEMBER FUNCTIONS  -------------------------//
 std::ostream	&operator<<(std::ostream & o, Bureaucrat const & i)
 {
 	o << i.getName() << ", bureaucrat grade " << i.getGrade();
 	return (o);
 }
-//-----------------------------------------------------------------//
+//---------------------------------------------------------------------------//
 

@@ -16,7 +16,8 @@ SRC_DIR		=	src/
 OBJ_DIR		=	temp/
 
 SRC			=	$(addprefix $(SRC_DIR),	main.cpp \
-										Bureaucrat.cpp)
+										Bureaucrat.cpp \
+										ExceptionMaker.cpp)
 
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(notdir $(SRC:.cpp=.o)))
 

@@ -87,6 +87,27 @@ const bool	&Form::getSigned()	const
 
 //---------------------------------------------------------------------------//
 
+//------------------------------  EXCEPTIONS  -------------------------------//
+Form::GradeTooHighException::GradeTooHighException()
+	: ExceptionMaker("Grade goes beyond the best possible grade")
+{
+
+}
+
+Form::GradeTooLowException::GradeTooLowException()
+	: ExceptionMaker("Grade goes beyond the worst possible grade")
+{
+
+}
+
+Form::AlreadySignedException::AlreadySignedException()
+	: ExceptionMaker("The Form is already signed")
+{
+
+}
+
+//---------------------------------------------------------------------------//
+
 //--------------------------  NON MEMBER FUNCTIONS  -------------------------//
 std::ostream	&operator<<(std::ostream & o, Form const & i)
 {
